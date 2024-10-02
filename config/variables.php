@@ -1,14 +1,14 @@
 <?php
 // Variables
 return [
-  "creatorName" => "Pixinvent",
-  "creatorUrl" => "https://pixinvent.com",
-  "templateName" => "Vuexy",
-  "templateSuffix" => "Bootstrap Admin Template",
+  "creatorName" => "Honda Tasikmalaya",
+  "creatorUrl" => "https://yourwebsite.com",
+  "templateName" => "Honda Tasikmalaya",
+  "templateSuffix" => "Dealer Motor Resmi",
   "templateVersion" => "1.0.0",
   "templateFree" => false,
-  "templateDescription" => "Start your development with a Dashboard for Bootstrap 5",
-  "templateKeyword" => "dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5",
+  "templateDescription" => "Dapatkan motor Honda terbaru di Honda Tasikmalaya bersama Sandi Montana. Dealer resmi dengan penawaran harga terbaik dan layanan profesional.",
+  "templateKeyword" => "Honda Tasikmalaya, dealer Honda Tasikmalaya, beli motor Honda Tasikmalaya, Sandi Montana Honda, motor Honda Tasikmalaya",
   "licenseUrl" => "https://themeforest.net/licenses/standard",
   "livePreview" => "https://demos.pixinvent.com/vuexy-html-admin-template/landing/",
   "productPage" => "https://1.envato.market/vuexy_admin",
