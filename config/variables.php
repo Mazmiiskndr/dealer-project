@@ -3,7 +3,7 @@
 return [
   "creatorName" => "Honda Tasikmalaya",
   "creatorUrl" => "https://yourwebsite.com",
-  "templateName" => "Honda Tasikmalaya",
+  "templateName" => "Honda",
   "templateSuffix" => "Dealer Motor Resmi",
   "templateVersion" => "1.0.0",
   "templateFree" => false,
