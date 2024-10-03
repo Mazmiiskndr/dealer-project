@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    Auth\LoginController
+    Auth\LoginController,
+    Backend\DashboardController
 };
 
 /*
@@ -34,3 +35,9 @@ use App\Http\Controllers\{
 // TODO: SEHARUSNYA HOME TAMPILAN HOME DEALER BUKAN LOGIN PAGE
 // Home / Login Page route
 Route::get('/', [LoginController::class, 'index'])->name('login');
+
+// Grouping routes backend
+Route::middleware('auth')->name('backend.')->group(function () {
+    // Route for dashboard page
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
