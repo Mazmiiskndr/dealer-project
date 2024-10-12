@@ -115,7 +115,7 @@ $navbarDetached = ($navbarDetached ?? '');
                                 </a>
                             </li>
                             {{-- TODO: --}}
-                            {{-- @if (auth()->check())
+                            @if (auth()->check())
                             <li>
                                 <a class="dropdown-item text-danger" href="javascript:void(0)" onclick="logoutButton();">
                                     <i class='ti ti-logout me-2'></i>
@@ -123,9 +123,9 @@ $navbarDetached = ($navbarDetached ?? '');
                                 </a>
                             </li>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">
-                            @csrf
+                                @csrf
                             </form>
-                            @endif --}}
+                            @endif
                         </ul>
                     </li>
                     <!--/ User -->
@@ -137,3 +137,31 @@ $navbarDetached = ($navbarDetached ?? '');
         @endif
     </nav>
     <!-- / Navbar -->
+    @push('scripts')
+    <script>
+        function logoutButton() {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Anda yakin ingin keluar?'
+                , text: "Anda tidak akan dapat mengakses data lagi!!"
+                , icon: 'warning'
+                , showCancelButton: true
+                , confirmButtonColor: '#7367f0'
+                , cancelButtonColor: '#d33'
+                , confirmButtonText: 'Ya, Keluar!'
+                , cancelButtonText: 'Batal'
+                , customClass: {
+                    confirmButton: 'btn btn-primary me-1'
+                    , cancelButton: 'btn btn-label-secondary'
+                }
+                , buttonsStyling: false
+            , }).then((result) => {
+                // Jika Result adalah True maka form akan di submit untuk logout
+                if (result.isConfirmed) {
+                    document.querySelector("#logout-form").submit();
+                }
+            });
+        }
+
+    </script>
+    @endpush

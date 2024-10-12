@@ -39,7 +39,7 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
     <!-- Include Styles -->
     <!-- $isFront is used to append the front layout styles only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/styles' . $isFront)
-
+    @stack('styles')
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- $isFront is used to append the front layout scriptsIncludes only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/scriptsIncludes' . $isFront)
@@ -53,11 +53,47 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
     <!--/ Layout Content -->
 
 
-
+    @stack('scripts')
     <!-- Include Scripts -->
     <!-- $isFront is used to append the front layout scripts only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/scripts' . $isFront)
     @livewireScripts
+    {{-- Check if the authentication is already exist! --}}
+    @if (session()->has('auth'))
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if ("{{ session('auth') }}") {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: "{{ session('auth') }}"
+                    , type: 'error'
+                    , customClass: {
+                        confirmButton: 'btn btn-primary'
+                    }
+                    , buttonsStyling: false
+                });
+            }
+        });
+
+    </script>
+    @endif
+    @if (session()->has('logout'))
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if ("{{ session('logout') }}") {
+                Swal.fire({
+                    position: 'center'
+                    , icon: 'success'
+                    , title: "{{ session('logout') }}"
+                    , showConfirmButton: false
+                    , timer: 2500
+                });
+            }
+        });
+
+    </script>
+    @endif
 </body>
 
 </html>

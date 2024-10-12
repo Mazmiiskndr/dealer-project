@@ -41,3 +41,6 @@ Route::middleware('auth')->name('backend.')->group(function () {
     // Route for dashboard page
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
+
+// Route for logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
