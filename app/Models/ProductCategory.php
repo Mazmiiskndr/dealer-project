@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\UseUuid as Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
-class BlogCategory extends Model
+class ProductCategory extends Model
 {
     use HasFactory;
-    protected $table = 'blog_categories';
+
+    protected $table = 'product_categories';
     protected $guarded = [];
+
     protected $fillable = [
         'id',
         'slug',
@@ -21,13 +22,13 @@ class BlogCategory extends Model
 
     public function blogs(): HasMany
     {
-        return $this->hasMany(Blog::class, 'category_id');
+        return $this->hasMany(Product::class, 'category_id');
     }
 
     protected static function booted()
     {
-        static::creating(function ($blogCategory) {
-            $blogCategory->slug = str()->slug($blogCategory->name);
+        static::creating(function ($productCategory) {
+            $productCategory->slug = str()->slug($productCategory->name);
         });
     }
 }
