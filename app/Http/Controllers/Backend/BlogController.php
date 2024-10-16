@@ -11,4 +11,12 @@ class BlogController extends Controller
     {
         return view('pages.backend.blogs.index');
     }
+    public function categories()
+    {
+        return view('pages.backend.blogs.categories.index');
+    }
+    public function tags()
+    {
+        return view('pages.backend.blogs.tags.index');
+    }
 }

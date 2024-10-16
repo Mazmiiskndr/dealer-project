@@ -19,4 +19,6 @@ use App\Http\Controllers\{
 Route::middleware('auth')->name('backend.')->group(function () {
     // Route for blogs page
     Route::get('blogs', [BlogController::class, 'index'])->name('blogs.index');
+    Route::get('categories', [BlogController::class, 'categories'])->name('categories.index');
+    Route::get('tags', [BlogController::class, 'tags'])->name('tags.index');
 });
