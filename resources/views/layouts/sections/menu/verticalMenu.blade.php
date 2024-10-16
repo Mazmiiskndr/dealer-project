@@ -31,15 +31,20 @@ $configData = Helper::appClasses();
             </a>
         </li>
 
-        <!-- Blogs Item -->
-        <li class="menu-item">
+        <!-- Content Management Item -->
+        <li class="menu-item {{ request()->is('blogs*') || request()->is('categories*') || request()->is('tags*') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-news"></i>
-                <div>Blogs</div>
+                <div>Content</div>
             </a>
 
-            <!-- Submenu for Blog : Tags & Categories -->
+            <!-- Submenu for Blog, Tags & Categories -->
             <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('blogs') ? 'active' : '' }}">
+                    <a href="{{ route('backend.blogs.index') }}" class="menu-link ml-4">
+                        <div>Blogs</div>
+                    </a>
+                </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link ml-4">
                         <div>Tags</div>

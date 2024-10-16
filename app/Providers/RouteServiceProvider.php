@@ -29,14 +29,42 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+            $this->registerApiRoutes();
+            $this->registerWebRoutes();
+            $this->registerBlogsRoutes();
         });
+    }
+
+    /**
+     * Register routes for the api section.
+     * @return void
+     */
+    protected function registerApiRoutes()
+    {
+        Route::prefix('api')->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Register routes for the web section.
+     * @return void
+     */
+    protected function registerWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Register routes for the blogs section.
+     * @return void
+     */
+    protected function registerBlogsRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/blogs.php'));
     }
 }
