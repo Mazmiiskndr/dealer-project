@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\UseUuid as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -19,10 +20,22 @@ class Product extends Model
         'title',
         'slug',
         'summary',
-        'content',
+        'description', // Mengganti "content" dengan "description"
         'tags',
-        'images',
+        'thumbnail_image', // Thumbnail utama
+        'price',
+        'installment',
+        'engine_type',
+        'engine_capacity',
+        'frame_type',
+        'dimension',
+        'fuel_capacity',
     ];
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProductImage::class, 'product_id');
+    }
 
     public function category(): BelongsTo
     {

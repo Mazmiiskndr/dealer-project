@@ -20,7 +20,7 @@ class ProductCategory extends Model
         'description'
     ];
 
-    public function blogs(): HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class, 'category_id');
     }

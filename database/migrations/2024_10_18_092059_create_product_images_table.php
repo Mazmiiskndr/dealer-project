@@ -10,20 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('category_id');
-            $table->string('title', 191);
-            $table->string('slug', 191)->unique();
-            $table->text('summary')->nullable();
-            $table->longText('content');
-            $table->json('tags')->nullable();
-            $table->string('thumbnail_image', 191);
+            $table->uuid('product_id');
+            $table->string('image', 191);
+            $table->text('description')->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')
+            // Foreign key untuk produk
+            $table->foreign('product_id')
                 ->references('id')
-                ->on('blog_categories')
+                ->on('products')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -34,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('product_images');
     }
 };

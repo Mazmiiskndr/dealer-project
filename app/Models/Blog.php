@@ -19,7 +19,7 @@ class Blog extends Model
         'summary',
         'content',
         'tags',
-        'images',
+        'thumbnail_image',
     ];
 
     public function category(): BelongsTo
