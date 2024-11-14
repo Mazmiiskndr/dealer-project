@@ -3,6 +3,9 @@
 @section('title', 'Blogs')
 
 @section('content')
+<h5 class="py-3 mb-2">
+    <span class="text-muted fw-light">Dashboard /</span> Blogs
+</h5>
 <!-- DataTable with Buttons -->
 <div class="card">
     <div class="card-header ">
@@ -12,15 +15,15 @@
             </div>
             <div>
                 <div class="d-flex justify-content-sm-end flex-column flex-sm-row gap-1">
-                    {{-- Start Button for Create New Mahasiswa --}}
+                    {{-- Start Button for Create New Blog --}}
                     <x-link-button color="primary btn-sm me-sm-1 mb-2 mb-sm-0" icon="tf-icons fas fa-plus-circle ti-xs me-1">
                         &nbsp; Add new Blog
                     </x-link-button>
-                    {{-- End Button for Create New Mahasiswa --}}
+                    {{-- End Button for Create New Blog --}}
 
                     {{-- Start Button for Delete Batch --}}
                     <x-button type="button" color="label-danger btn-sm" onclick="confirmDeleteBatch()">
-                        <i class="tf-icons fas fa-trash-alt ti-xs me-1"></i>&nbsp; Hapus Massal
+                        <i class="tf-icons fas fa-trash-alt ti-xs me-1"></i>&nbsp; Mass Delete
                     </x-button>
                     {{-- End Button for Delete Batch --}}
                     {{-- Start Save To Excel Student --}}
@@ -33,7 +36,8 @@
 
     {{-- Start List DataTable --}}
     <div class="card-body">
-        {{-- @livewire('backend.student.datatables') --}}
+
+        @livewire('backend.blog.cards')
     </div>
     {{-- End List DataTable --}}
 
