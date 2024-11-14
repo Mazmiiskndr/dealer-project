@@ -30,12 +30,11 @@ class DatabaseSeeder extends Seeder
         ProductCategory::factory(5)
             ->has(
                 Product::factory(10)
-                    ->has(ProductImage::factory(3), 'images') // Panggil relasi 'images' (plural)
+                    ->has(ProductImage::factory(3), 'images')
             )
             ->create();
 
 
-        // Jalankan seeder tambahan jika diperlukan
         $this->call([
             UserSeeder::class,
         ]);

@@ -58,12 +58,22 @@ $configData = Helper::appClasses();
             </ul>
         </li>
 
-        <!-- Settings Menu  -->
-        <li class="menu-item">
-            <a href="#" class="menu-link ">
+        <!-- Settings Item -->
+        <li class="menu-item {{ request()->is('blogs*') || request()->is('categories*') || request()->is('tags*') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-adjustments-horizontal"></i>
                 <div>Settings</div>
             </a>
+
+            <!-- Submenu for Blog, Tags & Categories -->
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="#" class="menu-link ml-4">
+                        <div>Profile</div>
+                    </a>
+                </li>
+
+            </ul>
         </li>
 
     </ul>
