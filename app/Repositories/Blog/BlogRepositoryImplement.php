@@ -108,6 +108,7 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository
      */
     public function getPaginatedBlogs($perPage, $search, $showing, $categoryFilters)
     {
+
         // Start building the query
         $query = $this->blogModel->with('category') // Load category relation
             ->where(function ($query) use ($search) {

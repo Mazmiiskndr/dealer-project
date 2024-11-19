@@ -31,20 +31,6 @@ class Cards extends Component
         // Retrieve paginated data based on search, showing, and category filters
         $blogs = $blogService->getPaginatedBlogs($this->perPage, $this->search, $this->showing, $this->categoryFilters) ?? [];
 
-        // Prepare pagination data
-        $paginationData = is_object($blogs) ? [
-            'firstItem' => $blogs->firstItem(),
-            'lastItem' => $blogs->lastItem(),
-            'total' => $blogs->total()
-        ] : [
-            'firstItem' => 0,
-            'lastItem' => 0,
-            'total' => 0
-        ];
-
-        // Emit pagination data event
-        $this->dispatch('paginationData', $paginationData);
-
         // Pass the paginated blogs to the view
         return view('livewire.backend.blog.cards', ['blogs' => $blogs]);
     }
@@ -89,13 +75,7 @@ class Cards extends Component
     #[On('searchCategory')]
     public function updateCategorySelected($categoryIds)
     {
-        // Periksa jika $categoryIds kosong atau hanya berisi elemen kosong
-        if (empty($categoryIds) || (is_array($categoryIds) && count(array_filter($categoryIds)) === 0)) {
-            $this->categoryFilters = [];
-        } else {
-            $this->categoryFilters = array_values($categoryIds);
-        }
-
+        $this->categoryFilters = is_array($categoryIds) ? array_filter($categoryIds) : [];
         // Reset pagination
         $this->resetPage();
     }

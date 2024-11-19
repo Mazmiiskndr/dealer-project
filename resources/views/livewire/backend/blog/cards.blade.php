@@ -38,10 +38,8 @@
         </div>
     </div>
     @endforeach
-    @if (!empty($blogs) && count($blogs) > 0 && method_exists($blogs, 'links'))
     <div class="mt-4 justify-content-between">
         {{ $blogs->links() }}
     </div>
-    @endif
 
 </div>

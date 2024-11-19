@@ -9,13 +9,12 @@
             </div>
         </div>
         <div class="mt-lg-0 col-lg-6 col-sm-12 mt-sm-3" wire:ignore>
-            <x-select-field id="category" label="Category Name" name="category" model="category" multiple :options="$categories ? $categories->toArray() : []" class="select2 form-select" data-allow-clear="true" />
+            <x-select-field id="category" label="Category Name" name="category" model="category" multiple :options="$categories ? $categories->toArray() : []" class="select2 form-select" data-allow-clear="true" data-placeholder="-- Select Category Name --" />
         </div>
 
     </form>
 </div>
 @push('scripts')
-{{-- TODO: --}}
 <script>
     document.addEventListener('livewire:init', function() {
         $('.select2').select2()
