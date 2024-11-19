@@ -2,6 +2,10 @@
 
 @section('title', 'Blogs')
 
+@push('styles')
+{{-- <link rel="stylesheet" href="{{asset('assets/vendor/libs/select2/select2.css')}}" /> --}}
+<link rel="stylesheet" href="{{asset('assets/vendor/libs/select2/select2.css')}}" />
+@endpush
 @section('content')
 <h5 class="py-3 mb-2">
     <span class="text-muted fw-light">Dashboard /</span> Blogs
@@ -10,11 +14,11 @@
 <div class="card">
     <div class="card-header ">
         <div class="d-flex justify-content-between flex-column flex-sm-row">
-            <div class="mb-1 mb-sm-0 text-center text-sm-start">
+            <div class="mb-1 text-center mb-sm-0 text-sm-start">
                 <h4 class="card-title">Table Blogs</h4>
             </div>
             <div>
-                <div class="d-flex justify-content-sm-end flex-column flex-sm-row gap-1">
+                <div class="gap-1 d-flex justify-content-sm-end flex-column flex-sm-row">
                     {{-- Start Button for Create New Blog --}}
                     <x-link-button color="primary btn-sm me-sm-1 mb-2 mb-sm-0" icon="tf-icons fas fa-plus-circle ti-xs me-1">
                         &nbsp; Add new Blog
@@ -26,9 +30,6 @@
                         <i class="tf-icons fas fa-trash-alt ti-xs me-1"></i>&nbsp; Mass Delete
                     </x-button>
                     {{-- End Button for Delete Batch --}}
-                    {{-- Start Save To Excel Student --}}
-                    {{-- @livewire('backend.student.save-to-excel') --}}
-                    {{-- End Save To Excel Student --}}
                 </div>
             </div>
         </div>
@@ -36,12 +37,17 @@
 
     {{-- Start List DataTable --}}
     <div class="card-body">
-
+        @livewire('backend.blog.form-search')
         @livewire('backend.blog.cards')
     </div>
     {{-- End List DataTable --}}
 
     @push('scripts')
+    <script src="{{ asset(mix('assets/js/forms-selects.js')) }}" defer></script>
+    <script src="{{ asset(mix('assets/vendor/libs/select2/select2.js')) }}" defer></script>
+    {{-- <script src="{{asset('assets/vendor/libs/select2/select2.js')}}" defer></script>
+    <script src="{{asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js')}}" defer></script>
+    <script src="{{asset('assets/js/forms-selects.js')}}" defer></script> --}}
     {{-- <script src="{{ asset('assets/datatable/datatables.min.js') }}" defer></script>
     @vite([
     'resources/assets/js/students-management.js'

@@ -97,4 +97,47 @@ class BlogRepositoryImplement extends Eloquent implements BlogRepository
         $this->blogModel->whereIn('id', $blogIds)->delete();
     }
 
+    /**
+     * Get paginated blogs with search, filters, and sorting options.
+     *
+     * @param int $perPage - Number of items per page
+     * @param string $search - Search keyword
+     * @param string $showing - Sorting option
+     * @param array $categoryFilters - Array of category filters
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getPaginatedBlogs($perPage, $search, $showing, $categoryFilters)
+    {
+        // Start building the query
+        $query = $this->blogModel->with('category') // Load category relation
+            ->where(function ($query) use ($search) {
+                // Search by blog title and category name
+                $query->where('title', 'LIKE', '%' . $search . '%')
+                    ->orWhereHas('category', function ($query) use ($search) {
+                    $query->where('name', 'LIKE', '%' . $search . '%');
+                });
+            });
+
+        // Apply category filters if available
+        if (!empty($categoryFilters)) {
+            $query->whereIn('category_id', $categoryFilters);
+        }
+
+        // Apply sorting options
+        switch ($showing) {
+            case 'latest':
+                $query->orderBy('created_at', 'DESC');
+                break;
+            case 'oldest':
+                $query->orderBy('created_at', 'ASC');
+                break;
+            default:
+                $query->orderBy('created_at', 'DESC');
+                break;
+        }
+
+        // Perform pagination and return the results
+        return $query->paginate($perPage);
+    }
+
 }

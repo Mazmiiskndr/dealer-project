@@ -33,4 +33,15 @@ interface BlogRepository extends Repository
      * @throws \InvalidArgumentException
      */
     public function deleteBlogs($blogIds);
+
+    /**
+     * Get paginated blogs with search, filters, and sorting options.
+     *
+     * @param int $perPage - Number of items per page
+     * @param string $search - Search keyword
+     * @param string $showing - Sorting option
+     * @param array $categoryFilters - Array of category filters
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getPaginatedBlogs($perPage, $search, $showing, $categoryFilters);
 }

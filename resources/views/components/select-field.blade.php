@@ -8,7 +8,7 @@ $selectAttributes = $attributes->merge([
 'name' => $id
 ]);
 
-$wireModel = $model ? 'wire:model.live=' . $model : '';
+$wireModel = $model ? 'wire:model=' . $model : '';
 $value = $attributes->get('value');
 @endphp
 

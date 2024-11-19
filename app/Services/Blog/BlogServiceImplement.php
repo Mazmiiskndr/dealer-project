@@ -56,4 +56,18 @@ class BlogServiceImplement extends Service implements BlogService
   {
     return $this->handleRepositoryCall('deleteBlogs', [$blogIds]);
   }
+
+  /**
+   * Get paginated blogs with search, filters, and sorting options.
+   *
+   * @param int $perPage - Number of items per page
+   * @param string $search - Search keyword
+   * @param string $showing - Sorting option
+   * @param array $categoryFilters - Array of category filters
+   * @return \Illuminate\Pagination\LengthAwarePaginator
+   */
+  public function getPaginatedBlogs($perPage, $search, $showing, $categoryFilters)
+  {
+    return $this->handleRepositoryCall('getPaginatedBlogs', [$perPage, $search, $showing, $categoryFilters]);
+  }
 }
