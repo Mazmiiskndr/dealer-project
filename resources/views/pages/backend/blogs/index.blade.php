@@ -26,9 +26,9 @@
                     {{-- End Button for Create New Blog --}}
 
                     {{-- Start Button for Delete Batch --}}
-                    <x-button type="button" color="label-danger btn-sm" onclick="confirmDeleteBatch()">
+                    {{-- <x-button type="button" color="label-danger btn-sm" onclick="confirmDeleteBatch()">
                         <i class="tf-icons fas fa-trash-alt ti-xs me-1"></i>&nbsp; Mass Delete
-                    </x-button>
+                    </x-button> --}}
                     {{-- End Button for Delete Batch --}}
                 </div>
             </div>
