@@ -38,8 +38,10 @@
         </div>
     </div>
     @endforeach
+    @if (!empty($blogs))
     <div class="mt-4 justify-content-between">
         {{ $blogs->links() }}
     </div>
+    @endif
 
 </div>

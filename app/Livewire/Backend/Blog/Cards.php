@@ -30,7 +30,6 @@ class Cards extends Component
     {
         // Retrieve paginated data based on search, showing, and category filters
         $blogs = $blogService->getPaginatedBlogs($this->perPage, $this->search, $this->showing, $this->categoryFilters) ?? [];
-
         // Pass the paginated blogs to the view
         return view('livewire.backend.blog.cards', ['blogs' => $blogs]);
     }
